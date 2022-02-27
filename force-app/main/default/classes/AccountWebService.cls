@@ -9,40 +9,41 @@ public with sharing class AccountWebService {
         public String phone {get; set;}
     }
  
-    public static void getAccount(Id accId) {
+    public static HTTPResponse getAccount(Id accId) {
  
         request = new HttpRequest();
         request.setMethod('GET');
         request.setEndpoint('callout:AccountsApi/services/apexrest/Account/' + accId);
- 
         response = http.send(request); 
- 
         System.debug(response.getBody());
+        return response;
     }
     
-    public static void addAccount(NewAccountRequestWrapper newAccount) {
+    public static HTTPResponse addAccount(NewAccountRequestWrapper newAccount) {
  
         request = new HttpRequest();
         request.setMethod('POST');
-        request.setEndpoint('callout:AccountsApi/services/apexrest/Account');
+        request.setEndpoint('callout:AccountsApi/services/apexrest/Account/');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
         request.setBody(JSON.serialize(newAccount));
  
         response = http.send(request); 
  
         System.debug(response.getBody());
+        return response;
     }
  
-    public static void deleteAccount(Id accId) {
+    public static HTTPResponse deleteAccount(Id accId) {
  
         request = new HttpRequest();
         request.setMethod('DELETE');
         request.setEndpoint('callout:AccountsApi/services/apexrest/Account/' + accId);
         response = http.send(request); 
         System.debug(response.getBody());
+        return response;
     }
     
-    public static void createUpdateAccount(NewAccountRequestWrapper newAccount, String accId) {
+    public static HTTPResponse createUpdateAccount(NewAccountRequestWrapper newAccount, String accId) {
  
         request = new HttpRequest();
         request.setMethod('PUT');
@@ -51,8 +52,9 @@ public with sharing class AccountWebService {
         request.setBody(JSON.serialize(newAccount));
         response = http.send(request); 
         System.debug(response.getBody());
+        return response;
     }
-    public static void updateAccount(NewAccountRequestWrapper newAccount, String accId) {
+    public static HTTPResponse updateAccount(NewAccountRequestWrapper newAccount, String accId) {
  
         request = new HttpRequest();
         request.setMethod('PATCH');
@@ -61,5 +63,6 @@ public with sharing class AccountWebService {
         request.setBody(JSON.serialize(newAccount));
         response = http.send(request); 
         System.debug(response.getBody());
+        return response;
     }
 }
