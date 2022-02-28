@@ -2,7 +2,7 @@ global class ContactsBatchable implements Database.Batchable<Contact>, Iterable<
     public integer i;
   	List<Contact> cts;
   	public ContactsBatchable() {
-    	cts = [Select Id, AccountId from Contact Where Is_Synced__c = false];
+    	cts = [Select Id, AccountId, Account.BillingStreet, Account.BillingCity, Account.BillingState, Account.BillingPostalCode from Contact Where Is_Synced__c = false];
     	i = 0;
   	}
   	
