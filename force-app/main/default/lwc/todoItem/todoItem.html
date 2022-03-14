@@ -1,0 +1,20 @@
+
+<template>
+    <div class="slds-p-vertical_xx-small">
+      <p>{todo.id}</p>
+      <p>{todo.title}</p>
+      <p>{todo.description}</p>
+      <p>{todo.priority}</p>
+      <p>{todo.category}</p>
+      <lightning-formatted-date-time
+        value={todo.created}
+        year="numeric"
+        day="2-digit"
+        month="long"
+        hour="2-digit"
+        hour12 ="false"
+        minute="2-digit"
+      >
+      </lightning-formatted-date-time>
+    </div>
+  </template>
